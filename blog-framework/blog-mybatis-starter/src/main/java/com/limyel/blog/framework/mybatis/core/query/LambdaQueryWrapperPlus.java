@@ -1,4 +1,4 @@
-package com.limyel.blog.mybatis.core.query;
+package com.limyel.blog.framework.mybatis.core.query;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
@@ -6,7 +6,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 public class LambdaQueryWrapperPlus<T> extends LambdaQueryWrapper<T> {

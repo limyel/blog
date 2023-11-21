@@ -1,4 +1,4 @@
-package com.limyel.blog.mybatis.core.mapper;
+package com.limyel.blog.framework.mybatis.core.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

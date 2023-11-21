@@ -16,6 +16,7 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <mybatis-plus.version>3.5.4</mybatis-plus.version>
         <mysql.version>8.0.33</mysql.version>
+        <flyway.version>9.19.4</flyway.version>
     </properties>
 
     <dependencyManagement>
@@ -55,6 +56,13 @@
                 <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-mysql</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

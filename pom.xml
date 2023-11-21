@@ -13,11 +13,11 @@
         <module>blog-common</module>
         <module>blog-admin</module>
         <module>blog-api</module>
+        <module>blog-framework</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>0.1.0</revision>
         <spring.boot.version>2.6.11</spring.boot.version>

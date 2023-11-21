@@ -1,4 +1,4 @@
-package com.limyel.blog.mybatis.core.dataobject;
+package com.limyel.blog.framework.mybatis.core.dataobject;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

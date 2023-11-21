@@ -1,7 +1,6 @@
-package com.limyel.blog.mybatis.core.query;
+package com.limyel.blog.framework.mybatis.core.query;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;

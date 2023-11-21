@@ -1,7 +1,7 @@
-package com.limyel.blog.mybatis.core.handler;
+package com.limyel.blog.framework.mybatis.core.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.limyel.blog.mybatis.core.dataobject.BaseDO;
+import com.limyel.blog.framework.mybatis.core.dataobject.BaseDO;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.util.ObjectUtils;
 
