@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 @AutoConfiguration
-@MapperScan(value = "${blog.mybatis.base-package}", annotationClass = Mapper.class)
+@MapperScan(value = "${blog.mybatis.base-package:com.limyel.blog}", annotationClass = Mapper.class)
 public class BlogMybatisAutoConfig {
 
     @Bean
