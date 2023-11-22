@@ -197,85 +197,84 @@ CREATE TABLE `sys_log_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='登录日志';
 
 
-CREATE TABLE `main_post` (
-                             `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-                             `title` varchar(128) DEFAULT NULL COMMENT '标题',
-                             `view_num` int DEFAULT '0' COMMENT '浏览量',
-                             `content` text DEFAULT NULL COMMENT '内容',
-                             `image` varchar(256) DEFAULT NULL COMMENT '图片',
-                             `slug` varchar(256) DEFAULT NULL COMMENT '别名',
-                             `description` varchar(1024) DEFAULT NULL COMMENT '描述',
-                             `allow_comment` bit(1) DEFAULT '0' COMMENT '是否可以评论',
-                             `top` bit(1) DEFAULT '0' COMMENT '置顶',
-                             `visibility` int NOT NULL COMMENT '可见性，1:仅自己可见，2:所有人可见',
-                             `publish_time` datetime DEFAULT NULL COMMENT '发布时间',
-                             `post_status` tinyint NOT NULL COMMENT '部门状态（0正常 1停用）',
-                             `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
-                             `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                             `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
-                             `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                             `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
-                             PRIMARY KEY (`id`) USING BTREE
+CREATE TABLE `blog_post` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `title` varchar(128) NOT NULL COMMENT '标题',
+    `view_num` int DEFAULT '0' COMMENT '浏览量',
+    `content` text DEFAULT NULL COMMENT '内容',
+    `image` varchar(256) DEFAULT '' COMMENT '图片',
+    `slug` varchar(256) DEFAULT NULL COMMENT '别名',
+    `description` varchar(1024) DEFAULT NULL COMMENT '描述',
+    `top` bit NOT NULL DEFAULT '0' COMMENT '置顶',
+    `draft` bit NOT NULL DEFAULT '0' COMMENT '是否为草稿',
+    `publish_time` datetime DEFAULT NULL COMMENT '发布时间',
+    `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
+    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
+    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='文章';
 
 
-CREATE TABLE `main_tag` (
-                            `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-                            `name` varchar(64) NOT NULL COMMENT '名称',
-                            `slug` varchar(256) NOT NULL COMMENT '别名',
-                            `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
-                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                            `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
-                            `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                            `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
-                            PRIMARY KEY (`id`) USING BTREE,
-                            UNIQUE KEY `slug` (`slug`)
+CREATE TABLE `blog_tag` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `name` varchar(64) NOT NULL COMMENT '名称',
+    `slug` varchar(256) NOT NULL COMMENT '别名',
+    `status` tinyint NOT NULL DEFAULT '1' COMMENT '状态，0:禁用，1:启用',
+    `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
+    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
+    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='标签';
 
 
-CREATE TABLE `main_post_tag` (
-                            `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-                            `post_id` bigint NOT NULL COMMENT '文章id',
-                            `tag_id` bigint NOT NULL COMMENT '标签id',
-                            `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
-                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                            `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
-                            `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                            `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
-                            PRIMARY KEY (`id`) USING BTREE,
-                            UNIQUE KEY `post_tag` (`post_id`, `tag_id`)
+CREATE TABLE `blog_post_tag` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `post_id` bigint NOT NULL COMMENT '文章id',
+    `tag_id` bigint NOT NULL COMMENT '标签id',
+    `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
+    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
+    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE KEY `uk_post_tag` (`post_id`, `tag_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='文章标签';
 
 
-CREATE TABLE `main_link` (
-                             `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-                             `name` varchar(64) NOT NULL COMMENT '名称',
-                             `description` varchar(256) DEFAULT NULL COMMENT '描述',
-                             `link` varchar(256) NOT NULL COMMENT '链接',
-                             `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
-                             `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                             `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
-                             `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                             `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
-                             PRIMARY KEY (`id`) USING BTREE
+CREATE TABLE `blog_link` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `name` varchar(64) NOT NULL COMMENT '名称',
+    `description` varchar(256) DEFAULT '' COMMENT '描述',
+    `link` varchar(256) NOT NULL COMMENT '链接',
+    `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
+    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
+    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='链接';
 
 
-CREATE TABLE `main_comment` (
-                                `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-                                `user_id` bigint DEFAULT NULL COMMENT '用户ID',
-                                `nickname` varchar(64) DEFAULT NULL COMMENT '昵称',
-                                `email` varchar(256) DEFAULT NULL COMMENT '邮箱',
-                                `post_id` bigint NOT NULL COMMENT '文章ID',
-                                `comment_id` bigint DEFAULT NULL COMMENT '目标评论ID',
-                                `content` varchar(2048) DEFAULT NULL COMMENT '内容',
-                                `audit_status` tinyint DEFAULT '1' COMMENT '审核状态，1:待审核，2:审核通过，3:审核不通过',
-                                `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
-                                `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                                `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
-                                `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                                `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
-                                PRIMARY KEY (`id`) USING BTREE
+CREATE TABLE `blog_comment` (
+    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `sys_user_id` bigint DEFAULT NULL COMMENT '用户ID',
+    `nickname` varchar(64) DEFAULT NULL COMMENT '昵称',
+    `email` varchar(256) DEFAULT NULL COMMENT '邮箱',
+    `post_id` bigint NOT NULL COMMENT '文章ID',
+    `comment_id` bigint DEFAULT NULL COMMENT '目标评论ID',
+    `content` varchar(2048) DEFAULT NULL COMMENT '内容',
+    `status` tinyint DEFAULT '0' COMMENT '状态，0:待审核，1:审核通过，2:审核不通过',
+    `creator_id` bigint DEFAULT NULL COMMENT '创建者ID',
+    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updater_id` bigint DEFAULT NULL COMMENT '更新者ID',
+    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='评论';
 
 
