@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class BaseDO {
+public class BaseEntity {
 
     @TableField(fill = FieldFill.INSERT)
     private Long creatorId;
