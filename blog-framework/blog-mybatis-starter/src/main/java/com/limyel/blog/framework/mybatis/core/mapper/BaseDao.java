@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public interface BaseMapperPlus<T> extends BaseMapper<T> {
+public interface BaseDao<T> extends BaseMapper<T> {
 
     default T selectOne(String field, Object value) {
         return selectOne(new QueryWrapper<T>().eq(field, value));

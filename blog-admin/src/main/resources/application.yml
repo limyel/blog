@@ -15,7 +15,7 @@ spring:
     active: local
   messages:
     encoding: UTF-8
-    basename: i18n/messages
+    basename: i18n/message
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER

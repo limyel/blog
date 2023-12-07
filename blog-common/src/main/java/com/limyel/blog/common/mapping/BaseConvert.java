@@ -8,7 +8,7 @@ import org.mapstruct.MappingTarget;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface BaseMapping<S, T> {
+public interface BaseConvert<S, T> {
 
     /**
      * 正向映射

@@ -1,4 +1,4 @@
-package com.limyel.blog.admin.sys.dataobject.entity;
+package com.limyel.blog.admin.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.blog.framework.mybatis.core.dataobject.BaseEntity;
