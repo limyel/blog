@@ -26,4 +26,10 @@ public class PageData<T> implements Serializable {
         this.list = list;
     }
 
+    public PageData(PageData<?> pageData, List<T> list) {
+        this.pages = pageData.getPages();
+        this.total = pageData.getTotal();
+        this.list = list;
+    }
+
 }
