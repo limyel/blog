@@ -18,7 +18,7 @@
         <module>blog-common</module>
         <module>blog-admin</module>
         <module>blog-api</module>
-        <module>blog-framework</module>
+        <module>blog-startup</module>
     </modules>
 
     <properties>

@@ -1,4 +1,4 @@
-package com.limyel.blog.framework.mybatis.core.dataobject;
+package com.limyel.blog.mybatis.pojo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -26,6 +26,5 @@ public class BaseEntity {
 
     @TableLogic
     private LocalDateTime deleteTime;
-
 
 }

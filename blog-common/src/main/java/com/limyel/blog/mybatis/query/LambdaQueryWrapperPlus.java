@@ -1,4 +1,4 @@
-package com.limyel.blog.framework.mybatis.core.query;
+package com.limyel.blog.mybatis.query;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
