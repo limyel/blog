@@ -17,7 +17,7 @@
     <modules>
         <module>blog-common</module>
         <module>blog-admin</module>
-        <module>blog-api</module>
+        <module>blog-main</module>
         <module>blog-startup</module>
     </modules>
 
