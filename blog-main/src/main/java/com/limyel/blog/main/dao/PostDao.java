@@ -10,6 +10,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface PostDao extends BaseDao<PostEntity> {
 
-    IPage<PostEntity> selectPage(Page<PostEntity> page, @Param("tagId") Long tagId);
+    IPage<PostEntity> selectPageSql(Page<PostEntity> page, @Param("tagId") Long tagId);
 
 }

@@ -1,5 +1,6 @@
 package com.limyel.blog.common.pojo;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,6 +30,12 @@ public class PageData<T> implements Serializable {
     public PageData(PageData<?> pageData, List<T> list) {
         this.pages = pageData.getPages();
         this.total = pageData.getTotal();
+        this.list = list;
+    }
+
+    public PageData(IPage<?> page, List<T> list) {
+        this.pages = page.getPages();
+        this.total = page.getTotal();
         this.list = list;
     }
 
