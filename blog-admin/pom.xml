@@ -26,6 +26,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.limyel</groupId>
+            <artifactId>blog-main</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
             <version>${flyway.version}</version>
