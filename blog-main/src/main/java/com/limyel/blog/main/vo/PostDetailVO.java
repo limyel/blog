@@ -8,17 +8,13 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PostSimpleVO {
+public class PostDetailVO extends PostSimpleVO {
 
     private Long id;
 
     private String title;
 
-    private String description;
-
-    private Boolean top;
-
-    private Long commentNum;
+    private String content;
 
     private List<TagSimpleVO> tags;
 

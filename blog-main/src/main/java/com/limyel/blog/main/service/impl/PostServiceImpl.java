@@ -14,6 +14,7 @@ import com.limyel.blog.main.service.CommentService;
 import com.limyel.blog.main.service.PostService;
 import com.limyel.blog.main.service.PostTagService;
 import com.limyel.blog.main.service.TagService;
+import com.limyel.blog.main.vo.PostDetailVO;
 import com.limyel.blog.main.vo.PostSimpleVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,14 @@ public class PostServiceImpl implements PostService {
             item.setCommentNum(commentService.countByPost(item.getId()));
         });
         return new PageData<>(page, list);
+    }
+
+    @Override
+    public PostDetailVO getDetail(Long id) {
+        PostEntity post = dao.selectById(id);
+        PostDetailVO result = PostConvert.INSTANCE.toDetailVO(post);
+        result.setTags(postTagService.listTagByPost(post.getId()));
+        return result;
     }
 
 }
