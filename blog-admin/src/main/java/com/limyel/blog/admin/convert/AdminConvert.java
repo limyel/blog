@@ -1,4 +1,4 @@
-package com.limyel.blog.admin.main.convert;
+package com.limyel.blog.admin.convert;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
