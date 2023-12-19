@@ -10,7 +10,9 @@ import com.limyel.blog.main.convert.PostConvert;
 import com.limyel.blog.main.dao.PostDao;
 import com.limyel.blog.main.dto.PostPageDTO;
 import com.limyel.blog.main.entity.PostEntity;
+import com.limyel.blog.main.service.CommentService;
 import com.limyel.blog.main.service.PostService;
+import com.limyel.blog.main.service.PostTagService;
 import com.limyel.blog.main.service.TagService;
 import com.limyel.blog.main.vo.PostSimpleVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,12 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private PostDao dao;
 
+    @Autowired
+    private PostTagService postTagService;
+
+    @Autowired
+    private CommentService commentService;
+
     public PageData<PostSimpleVO> getPage(PostPageDTO dto) {
         // todo tag 不存在
         Page<PostEntity> page = new Page<>(dto.getPageNum(), dto.getPageSize());
@@ -32,6 +40,10 @@ public class PostServiceImpl implements PostService {
         List<PostSimpleVO> list = page.getRecords().stream()
                 .map(PostConvert.INSTANCE::toSimpleVO)
                 .collect(Collectors.toList());
+        list.forEach(item -> {
+            item.setTags(postTagService.listTagByPost(item.getId()));
+            item.setCommentNum(commentService.countByPost(item.getId()));
+        });
         return new PageData<>(page, list);
     }
 

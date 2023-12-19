@@ -3,10 +3,4 @@
 
 <mapper namespace="com.limyel.blog.main.dao.TagDao">
 
-    <select id="selectByPost" resultType="tagEntity">
-        select * from main_tag t1
-            inner join main_post_tag t2
-                on t2.tag_id = t1.id and t2.post_id = #{postId}
-    </select>
-
 </mapper>

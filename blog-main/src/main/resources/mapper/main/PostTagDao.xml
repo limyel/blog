@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.limyel.blog.main.dao.PostTagDao">
+
+    <select id="selectByPost" resultType="tagEntity">
+        select * from main_tag t1
+                          inner join main_post_tag t2
+                                     on t2.tag_id = t1.id and t2.post_id = #{postId}
+    </select>
+
+</mapper>

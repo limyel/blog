@@ -35,10 +35,6 @@ public class PostController {
     @GetMapping
     public Result<PageData<PostSimpleVO>> getPage(PostPageDTO dto) {
         PageData<PostSimpleVO> result = service.getPage(dto);
-        result.getList().forEach(item -> {
-            item.setTags(tagService.listByPost(item.getId()));
-            item.setCommentNum(commentService.countByPost(item.getId()));
-        });
         return Result.ok(result);
     }
 
