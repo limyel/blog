@@ -29,4 +29,5 @@ public class PostTagServiceImpl implements PostTagService {
         wrapper.eq(PostTagEntity::getTagId, tagId);
         return dao.selectCount(wrapper);
     }
+
 }

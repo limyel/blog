@@ -9,4 +9,8 @@
                                      on t2.tag_id = t1.id and t2.post_id = #{postId}
     </select>
 
+    <delete id="deleteByPost">
+        delete from main_post_tag where post_id = #{postId}
+    </delete>
+
 </mapper>

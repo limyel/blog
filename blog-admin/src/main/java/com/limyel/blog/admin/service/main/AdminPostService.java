@@ -1,8 +1,8 @@
 package com.limyel.blog.admin.service.main;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.limyel.blog.admin.convert.AdminConvert;
 import com.limyel.blog.admin.convert.main.AdminPostConvert;
+import com.limyel.blog.admin.dto.main.PostDTO;
 import com.limyel.blog.admin.vo.main.PostSimpleVO;
 import com.limyel.blog.common.pojo.PageData;
 import com.limyel.blog.common.pojo.PageParam;
@@ -22,7 +22,7 @@ public class AdminPostService {
     private PostDao dao;
 
     @Autowired
-    private PostTagService postTagService;
+    private AdminPostTagService postTagService;
 
     public PageData<PostSimpleVO> getPage(PageParam pageParam) {
         Page<PostEntity> page = new Page<>(pageParam.getPageNum(), pageParam.getPageSize());
@@ -36,6 +36,24 @@ public class AdminPostService {
                 })
                 .collect(Collectors.toList());
         return new PageData<>(page, list);
+    }
+
+    public void add(PostDTO dto) {
+        PostEntity post = AdminPostConvert.INSTANCE.toEntity(dto);
+        dao.insert(post);
+        postTagService.addPostTags(post.getId(), dto.getTagIdList());
+    }
+
+    public void update(PostDTO dto) {
+        PostEntity post = AdminPostConvert.INSTANCE.toEntity(dto);
+        dao.updateById(post);
+        postTagService.deleteByPost(post.getId());
+        postTagService.addPostTags(post.getId(), dto.getTagIdList());
+    }
+
+    public void delete(Long id) {
+        dao.deleteById(id);
+        postTagService.deleteByPost(id);
     }
 
 }

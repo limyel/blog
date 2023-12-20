@@ -18,7 +18,7 @@ CREATE TABLE `admin` (
 CREATE TABLE `main_post` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
     `title` varchar(128) NOT NULL COMMENT '标题',
-    `view_num` int DEFAULT '0' COMMENT '浏览量',
+    `view_num` int NOT NULL DEFAULT '0' COMMENT '浏览量',
     `content` text DEFAULT NULL COMMENT '内容',
     `description` varchar(1024) DEFAULT NULL COMMENT '描述',
     `top` bit NOT NULL DEFAULT b'0' COMMENT '置顶',

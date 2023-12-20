@@ -12,4 +12,6 @@ public interface PostTagDao extends BaseDao<PostTagEntity> {
 
     List<TagEntity> selectByPost(Long postId);
 
+    Integer deleteByPost(Long postId);
+
 }

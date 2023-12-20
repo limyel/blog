@@ -27,7 +27,22 @@ public class AdminPostController {
     @LoginRequired
     @PostMapping
     public Result<?> add(@RequestBody PostDTO dto) {
-        return null;
+        service.add(dto);
+        return new Result<>();
+    }
+
+    @LoginRequired
+    @PostMapping
+    public Result<?> update(@RequestBody PostDTO dto) {
+        service.update(dto);
+        return new Result<>();
+    }
+
+    @LoginRequired
+    @DeleteMapping("/{id}")
+    public Result<?> delete(@PathVariable Long id) {
+        service.delete(id);
+        return new Result<>();
     }
 
 }

@@ -4,10 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 public class PostDTO {
+
+    private Long id;
 
     private String title;
 
@@ -22,5 +25,7 @@ public class PostDTO {
     private Boolean draft;
 
     private LocalDateTime publishTime;
+
+    List<Long> tagIdList;
 
 }
