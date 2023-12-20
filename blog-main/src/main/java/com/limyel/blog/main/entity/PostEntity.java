@@ -41,9 +41,14 @@ public class PostEntity extends BaseEntity {
     private Boolean top;
 
     /**
+     * 是否可评论
+     */
+    private Boolean comment;
+
+    /**
      * 草稿
      */
-    private Boolean Draft;
+    private Boolean draft;
 
     /**
      * 发布时间

@@ -1,6 +1,7 @@
 CREATE TABLE `admin` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `username` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '用户名',
+    `salt` varchar(256) COLLATE utf8mb4_bin NOT NULL COMMENT '加密盐',
     `password` varchar(256) COLLATE utf8mb4_bin NOT NULL COMMENT '密码',
     `site_name` varchar(32) COLLATE utf8mb4_bin NOT NULL COMMENT '网站标题',
     `sub_site_name` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '网站副标题',
@@ -21,6 +22,7 @@ CREATE TABLE `main_post` (
     `content` text DEFAULT NULL COMMENT '内容',
     `description` varchar(1024) DEFAULT NULL COMMENT '描述',
     `top` bit NOT NULL DEFAULT b'0' COMMENT '置顶',
+    `comment` bit NOT NULL DEFAULT b'0' COMMENT '是否可评论',
     `draft` bit NOT NULL DEFAULT b'0' COMMENT '是否为草稿',
     `publish_time` datetime DEFAULT NULL COMMENT '发布时间',
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

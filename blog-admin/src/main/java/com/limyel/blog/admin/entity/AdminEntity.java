@@ -19,6 +19,11 @@ public class AdminEntity extends BaseEntity {
     private String username;
 
     /**
+     * 加密盐
+     */
+    private String salt;
+
+    /**
      * 密码
      */
     private String password;

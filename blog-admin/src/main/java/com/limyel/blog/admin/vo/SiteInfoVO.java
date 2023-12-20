@@ -11,6 +11,6 @@ public class SiteInfoVO {
 
     private String siteName;
 
-    private String siteSubName;
+    private String subSiteName;
 
 }
