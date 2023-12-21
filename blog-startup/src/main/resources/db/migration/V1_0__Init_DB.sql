@@ -57,7 +57,6 @@ CREATE TABLE `main_post_tag` (
 CREATE TABLE `main_link` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
     `name` varchar(64) NOT NULL COMMENT '名称',
-    `description` varchar(256) DEFAULT '' COMMENT '描述',
     `url` varchar(256) NOT NULL COMMENT '地址',
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',

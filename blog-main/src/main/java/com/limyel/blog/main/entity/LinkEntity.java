@@ -19,11 +19,6 @@ public class LinkEntity extends BaseEntity {
     private String name;
 
     /**
-     * 描述
-     */
-    private String description;
-
-    /**
      * 地址
      */
     private String url;

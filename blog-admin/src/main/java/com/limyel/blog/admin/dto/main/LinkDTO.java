@@ -1,11 +1,13 @@
-package com.limyel.blog.main.vo;
+package com.limyel.blog.admin.dto.main;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class LinkVO {
+public class LinkDTO {
+
+    private Long id;
 
     private String name;
 
