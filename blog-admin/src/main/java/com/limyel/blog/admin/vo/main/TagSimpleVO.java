@@ -1,14 +1,16 @@
-package com.limyel.blog.admin.dto.main;
+package com.limyel.blog.admin.vo.main;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AdminTagDTO {
+public class TagSimpleVO {
 
     private Long id;
 
     private String name;
+
+    private Long postNum;
 
 }

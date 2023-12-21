@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-public class AdminPostTagService extends PostTagServiceImpl {
+@Service("adminPostTagService")
+public class PostTagService extends PostTagServiceImpl {
 
     @Autowired
     private PostTagDao dao;

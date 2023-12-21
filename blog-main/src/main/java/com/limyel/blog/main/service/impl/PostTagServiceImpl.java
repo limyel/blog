@@ -6,13 +6,14 @@ import com.limyel.blog.main.dao.PostTagDao;
 import com.limyel.blog.main.entity.PostTagEntity;
 import com.limyel.blog.main.service.PostTagService;
 import com.limyel.blog.main.vo.TagSimpleVO;
-import com.limyel.blog.mybatis.query.LambdaQueryWrapperPlus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Primary
 public class PostTagServiceImpl implements PostTagService {
 
     @Autowired
