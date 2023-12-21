@@ -10,4 +10,6 @@ public interface PostTagService {
 
     Long countPostByTag(Long tagId);
 
+    Long countTagByPost(Long postId);
+
 }

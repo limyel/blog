@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PostSimpleVO {
+public class AdminPostSimpleVO {
 
     private Long id;
 

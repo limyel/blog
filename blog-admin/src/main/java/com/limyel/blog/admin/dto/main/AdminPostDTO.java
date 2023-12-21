@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PostDTO {
+public class AdminPostDTO {
 
     private Long id;
 
