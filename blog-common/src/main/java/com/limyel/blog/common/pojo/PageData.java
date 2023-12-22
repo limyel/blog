@@ -21,10 +21,10 @@ public class PageData<T> implements Serializable {
 
     private List<T> list;
 
-    public PageData(Long pages, Long total, List<T> list) {
-        this.pages = pages;
-        this.total = total;
-        this.list = list;
+    public PageData(IPage<T> page) {
+        this.pages = page.getPages();
+        this.total = page.getTotal();
+        this.list = page.getRecords();
     }
 
     public PageData(PageData<?> pageData, List<T> list) {
