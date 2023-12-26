@@ -10,6 +10,9 @@ import com.limyel.blog.security.annotation.LoginRequired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * todo 外部的模块以插件的形式引入
+ */
 @RestController("adminPostController")
 @RequestMapping("/admin/main/post")
 public class PostController {
