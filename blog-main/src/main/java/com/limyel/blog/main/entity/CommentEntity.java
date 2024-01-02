@@ -34,6 +34,11 @@ public class CommentEntity extends BaseEntity {
     private Long pid;
 
     /**
+     * IP地址
+     */
+    private String ip;
+
+    /**
      * 内容
      */
     private String content;
@@ -42,6 +47,11 @@ public class CommentEntity extends BaseEntity {
      * 是否为admin评论
      */
     private Boolean admin;
+
+    /**
+     * 类型，0:留言，1:评论
+     */
+    private Integer type;
 
     /**
      * 状态，0:待审核，1:审核通过，2:审核不通过
