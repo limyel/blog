@@ -1,0 +1,14 @@
+### 文章-列表
+GET {{baseUrl}}/post
+
+
+### 文章-归档
+GET {{baseUrl}}/post/archive
+
+
+### 标签-详情
+GET {{baseUrl}}/tag/test
+
+
+### 标签-列表
+GET {{baseUrl}}/tag

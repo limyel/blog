@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limyel.blog.dao.PostTagDao">
+
+    <select id="selectTagByPost" resultType="com.limyel.blog.entity.TagEntity">
+        select t1.* from tag t1
+        inner join post_tag t2 on t1.id = t2.tag_id and t2.post_id = #{postId}
+        where t1.delete_time is null and t2.delete_time is null;
+    </select>
+
+    <select id="selectPostByTag" resultType="com.limyel.blog.entity.PostEntity">
+        select t1.* from post t1
+        inner join post_tag t2 on t1.id = t2.post_id and t2.tag_id = #{tagId}
+        where t1.delete_time is null and t2.delete_time is null;
+    </select>
+
+    <select id="countByTag" resultType="int">
+        select count(t1.id) from post t1
+        inner join post_tag t2 on t1.id = t2.post_id and t2.tag_id = #{tagId}
+        where t1.status = 1 and t1.delete_time is null and t2.delete_time is null
+    </select>
+
+    <delete id="deleteByPost">
+        delete from post_tag t1 where t1.post_id = #{postId};
+    </delete>
+
+    <delete id="deleteByTag">
+        delete from post_tag t1 where t1.tag_id = #{tagId};
+    </delete>
+
+</mapper>

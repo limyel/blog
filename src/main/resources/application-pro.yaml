@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    username: blog
+    password: Lxh+blog
+    url: jdbc:mysql://106.55.131.8:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 60000
+      max-lifetime: 1800000
+
+haoyuan:
+  password:
+    salt: lakdjoaij8923j4f98jsdinfjkadnbf82h3487htf
+    iteration: 1000
+    length: 512
