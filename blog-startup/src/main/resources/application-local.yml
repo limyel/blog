@@ -3,6 +3,7 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 10
       minimum-idle: 10
@@ -34,3 +35,9 @@ blog:
     iteration: 1000
     length: 512
     algorithm: PBKDF2WithHmacSHA256
+  rsa:
+    pub: jwt_rsa.pub
+    pri: jwt_rsa
+  jwt:
+    expire: 108000
+    header: Authorization

@@ -6,12 +6,14 @@ import com.limyel.blog.admin.entity.AdminEntity;
 import com.limyel.blog.admin.vo.TokenVO;
 import com.limyel.blog.common.config.BlogConfig;
 import com.limyel.blog.common.util.RsaUtil;
+import com.limyel.blog.security.config.UserEntity;
+import com.limyel.blog.security.config.UserService;
 import com.limyel.blog.security.jwt.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AdminService {
+public class AdminService implements UserService {
 
     @Autowired
     private AdminDao adminDao;
@@ -27,4 +29,9 @@ public class AdminService {
         return result;
     }
 
+    @Override
+    public UserEntity getById(Long id) {
+        AdminEntity admin = adminDao.selectById(id);
+        return admin;
+    }
 }

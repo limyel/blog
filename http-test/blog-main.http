@@ -1,5 +1,5 @@
 ### 文章-列表
-GET {{baseUrl}}/post
+GET {{baseUrl}}/main/post
 
 
 ### 文章-归档

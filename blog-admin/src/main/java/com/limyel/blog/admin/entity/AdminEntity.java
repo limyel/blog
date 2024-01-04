@@ -1,12 +1,15 @@
 package com.limyel.blog.admin.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.blog.mybatis.pojo.BaseEntity;
+import com.limyel.blog.security.config.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AdminEntity extends BaseEntity {
+@TableName("admin")
+public class AdminEntity extends BaseEntity implements UserEntity {
 
     /**
      * 用户名

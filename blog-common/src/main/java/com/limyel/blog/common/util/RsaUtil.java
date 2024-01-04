@@ -40,7 +40,7 @@ public class RsaUtil {
 
     public static PrivateKey getPrivateKey() {
         try {
-            ClassPathResource resource = new ClassPathResource(rsa.getPub());
+            ClassPathResource resource = new ClassPathResource(rsa.getPri());
             byte[] privateKeyBytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
             byte[] decode = Base64Utils.decode(privateKeyBytes);
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decode);

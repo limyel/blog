@@ -1,5 +1,5 @@
 ### 登录
-POST {{baseUrl}}/sys/user/login
+POST {{baseUrl}}/admin/login
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 > {%
     client.test("登录成功", function () {
 
-        client.global.set("Authorization", response.body.data);
+        client.global.set("Authorization", "bearer " + response.body.data);
     })
 %}
 

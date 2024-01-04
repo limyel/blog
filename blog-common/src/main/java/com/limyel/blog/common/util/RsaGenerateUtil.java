@@ -48,7 +48,7 @@ public class RsaGenerateUtil {
     }
 
     public static void main(String[] args) {
-        generateKey("C:/Users/limye/jwt_rsa.pub", "C:/Users/limye/jwt_rsa", RSA_SECURT);
+        generateKey("/tmp/jwt_rsa.pub", "/tmp/jwt_rsa", RSA_SECURT);
     }
 
 }

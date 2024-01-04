@@ -37,6 +37,8 @@ public class BlogConfig {
     @Setter
     public static class JwtProperties {
         private Integer expire = 60 * 60 * 30;
+        private String header = "Authorization";
+        private String start = "bearer";
     }
 
 }

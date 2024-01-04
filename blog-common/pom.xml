@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>blog-common</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <mybatis-plus.version>3.5.4</mybatis-plus.version>
