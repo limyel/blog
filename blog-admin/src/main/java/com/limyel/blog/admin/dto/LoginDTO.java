@@ -1,4 +1,4 @@
-package com.limyel.blog.dto;
+package com.limyel.blog.admin.dto;
 
 import lombok.Getter;
 import lombok.Setter;

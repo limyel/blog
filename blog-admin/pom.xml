@@ -14,4 +14,12 @@
     <properties>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.limyel</groupId>
+            <artifactId>blog-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+
 </project>
