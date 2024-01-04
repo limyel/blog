@@ -4,9 +4,9 @@
 <mapper namespace="com.limyel.blog.main.dao.PostTagDao">
 
     <select id="selectByPost" resultType="tagEntity">
-        select * from main_tag t1
-                          inner join main_post_tag t2
-                                     on t2.tag_id = t1.id and t2.post_id = #{postId}
+        select t1.id, t1.name from main_tag t1
+            inner join main_post_tag t2
+                on t2.tag_id = t1.id and t2.post_id = #{postId}
     </select>
 
     <delete id="deleteByPost">

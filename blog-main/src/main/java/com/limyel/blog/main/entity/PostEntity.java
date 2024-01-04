@@ -1,11 +1,14 @@
 package com.limyel.blog.main.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.limyel.blog.main.vo.tag.TagVO;
 import com.limyel.blog.mybatis.pojo.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 文章
@@ -54,5 +57,12 @@ public class PostEntity extends BaseEntity {
      * 发布时间
      */
     private LocalDateTime publishTime;
+
+
+    @TableField(exist = false)
+    private List<TagVO> tags;
+
+    @TableField(exist = false)
+    private Long commentNum;
 
 }

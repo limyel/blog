@@ -4,9 +4,15 @@
 <mapper namespace="com.limyel.blog.main.dao.PostDao">
 
     <select id="selectPageSql" resultType="postEntity">
-        select * from main_post t1
-            inner join main_post_tag t2
-                on t2.tag_id = #{tagId} and t2.post_id = t1.id
+        select t1.id, title, description, top, publish_time from main_post t1
+            <if test="tagIds != null">
+                inner join main_post_tag t2
+                on t2.post_id = t1.id and t2.tag_id in
+                    <foreach collection="tagIds" open="(" close=")" separator="," item="tagId">
+                        {{tagId}}
+                    </foreach>
+            </if>
+            where t1.draft = 0
     </select>
 
 </mapper>

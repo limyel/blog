@@ -1,5 +1,6 @@
 package com.limyel.blog.common.util;
 
+import com.limyel.blog.common.config.BlogConfig;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.crypto.SecretKey;
@@ -13,32 +14,22 @@ import java.util.Base64;
 
 public class EncryptUtil {
 
-    private static String salt;
-    private static String SALT_KEY = "${haoyuan.password.salt:123456}";
-
-    private static Integer iteration;
-    private static String ITERATION_KEY = "${haoyuan.password.iteration:1000}";
-
-    private static Integer length;
-    private static String LENGTH_KEY = "${haoyuan.password.length:512}";
-
-    //算法名称
-    private static final String ALGORITHM_NAME = "PBKDF2WithHmacSHA256";
+    private static BlogConfig.EncryptProperties properties;
 
     static {
-        salt = SpringContextUtil.getProperty(SALT_KEY);
-        iteration = Integer.valueOf(SpringContextUtil.getProperty(ITERATION_KEY));
-        length = Integer.valueOf(SpringContextUtil.getProperty(LENGTH_KEY));
+        BlogConfig blogConfig = SpringContextUtil.getBean(BlogConfig.class);
+        properties = blogConfig.getEncrypt();
     }
 
     public static String encrypt(String password) {
         SecretKeyFactory keyFactory = null;
         try {
-            keyFactory = SecretKeyFactory.getInstance(ALGORITHM_NAME);
+            keyFactory = SecretKeyFactory.getInstance(properties.getAlgorithm());
         } catch (NoSuchAlgorithmException e) {
             System.out.println("无法检索 pbkdf2_sha256 算法："+e);
         }
-        KeySpec keySpec = new PBEKeySpec(password.toCharArray(), salt.getBytes(StandardCharsets.UTF_8), iteration, length);
+        KeySpec keySpec = new PBEKeySpec(password.toCharArray(), properties.getSalt().getBytes(StandardCharsets.UTF_8),
+                properties.getIteration(), properties.getLength());
         SecretKey secret = null;
         try {
             secret = keyFactory.generateSecret(keySpec);

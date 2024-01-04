@@ -27,3 +27,10 @@ spring:
               packages:
     listener:
       missing-topics-fatal: false # 消费者监听的主题不存在时不会报错
+
+blog:
+  encrypt:
+    salt: 12345678
+    iteration: 1000
+    length: 512
+    algorithm: PBKDF2WithHmacSHA256
