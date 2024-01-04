@@ -56,4 +56,8 @@ public class PostTagService {
         postTagDao.deleteByPost(postId);
     }
 
+    public void deleteByTag(Long tagId) {
+        postTagDao.deleteByTag(tagId);
+    }
+
 }

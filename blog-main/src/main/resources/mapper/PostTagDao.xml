@@ -13,4 +13,8 @@
         delete from main_post_tag where post_id = #{postId}
     </delete>
 
+    <delete id="deleteByTag">
+        delete from main_post_tag where tag_id = #{tagId}
+    </delete>
+
 </mapper>
