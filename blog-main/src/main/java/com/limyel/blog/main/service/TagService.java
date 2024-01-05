@@ -46,6 +46,7 @@ public class TagService {
         List<TagVO> list = page.getRecords().stream()
                 .map(TagConvert.INSTANCE::toVO)
                 .toList();
+        setPostNum(list);
         return new PageData<>(page, list);
     }
 
@@ -69,6 +70,12 @@ public class TagService {
     public void delete(Long id) {
         postTagService.deleteByPost(id);
         tagDao.deleteById(id);
+    }
+
+    // private
+
+    private void setPostNum(List<TagVO> tags) {
+        tags.forEach(tag -> tag.setPostNum(postTagService.countPostByTag(tag.getId())));
     }
 
 }

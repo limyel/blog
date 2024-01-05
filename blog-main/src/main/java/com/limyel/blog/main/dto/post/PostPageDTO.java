@@ -10,6 +10,6 @@ import java.util.List;
 @Setter
 public class PostPageDTO extends PageParam {
 
-    private List<Long> tagIds;
+    private Long tagId;
 
 }

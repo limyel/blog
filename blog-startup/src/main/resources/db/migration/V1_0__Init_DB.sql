@@ -2,6 +2,7 @@ CREATE TABLE `admin` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `username` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '用户名',
     `password` varchar(256) COLLATE utf8mb4_bin NOT NULL COMMENT '密码',
+    `about` text DEFAULT NULL COMMENT '关于',
     `remark` varchar(512) COLLATE utf8mb4_bin DEFAULT '' COMMENT '备注',
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',

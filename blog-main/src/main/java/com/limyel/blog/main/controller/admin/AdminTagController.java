@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/tag")
+@RequestMapping("/sys/tag")
 public class AdminTagController {
 
     @Autowired

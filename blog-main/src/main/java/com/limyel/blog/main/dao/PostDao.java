@@ -12,6 +12,6 @@ import java.util.List;
 @Mapper
 public interface PostDao extends BaseDao<PostEntity> {
 
-    IPage<PostEntity> selectPageSql(Page<PostEntity> page, @Param("tagIds") List<Long> tagIds);
+    IPage<PostEntity> selectPageSql(Page<PostEntity> page, @Param("tagId") Long tagId);
 
 }

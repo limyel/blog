@@ -21,8 +21,6 @@ public class DefaultFieldHandler implements MetaObjectHandler {
             if (ObjectUtils.isEmpty(baseEntity.getUpdateTime())) {
                 baseEntity.setUpdateTime(now);
             }
-
-            // todo userId
         }
     }
 

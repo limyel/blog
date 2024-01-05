@@ -10,261 +10,49 @@ Content-Type: application/json
 > {%
     client.test("登录成功", function () {
 
-        client.global.set("Authorization", "bearer " + response.body.data);
+        client.global.set("Authorization", "bearer " + response.body.data.token);
     })
 %}
 
 
-### 用户-新增
-POST {{baseUrl}}/sys/user
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "username": "testtt",
-  "password": "123456",
-  "gender": 1,
-  "email": "test@test.com",
-  "mobile": "13423409843",
-  "roleIdList": [
-    1
-  ],
-  "status": 0
-}
-
-### 用户-删除
-DELETE {{baseUrl}}/sys/user?ids=2,3,4
-Authorization: {{Authorization}}
-
-### 用户-更新
-PUT {{baseUrl}}/sys/user
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "id": 2,
-  "username": "test222",
-  "password": "123456",
-  "gender": 2,
-  "email": "test@test.com",
-  "mobile": "13423409843",
-  "roleIdList": [1],
-  "status": 0
-}
-
-### 用户-列表
-GET {{baseUrl}}/sys/user
-Authorization: {{Authorization}}
-
-### 用户-详情
-GET {{baseUrl}}/sys/user/2
-Authorization: {{Authorization}}
-
-### 当前用户信息
-GET {{baseUrl}}/sys/user/info
-Authorization: {{Authorization}}
-
-
-
-### 参数-新增
-POST {{baseUrl}}/sys/param
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "value": "12311231223",
-  "remark": "测试"
-}
-
-### 参数-删除
-DELETE {{baseUrl}}/sys/param?ids=1,2
-Authorization: {{Authorization}}
-
-### 参数-修改
-PUT {{baseUrl}}/sys/param
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "id": 1,
-  "paramCode": "testttttt",
-  "paramValue": "123123",
-  "remark": "测试"
-}
-
-### 参数-列表
-GET {{baseUrl}}/sys/param
-Authorization: {{Authorization}}
-
-
-
-### 角色-新增
-POST {{baseUrl}}/sys/role
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "name": "test",
-  "status": 0,
-  "remark": "test"
-}
-
-### 角色-删除
-DELETE {{baseUrl}}/sys/role?ids=4
-Authorization: {{Authorization}}
-
-### 角色-修改
-PUT {{baseUrl}}/sys/role
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "id": 4,
-  "name": "test111",
-  "status": 0,
-  "remark": "test"
-}
-
-### 角色-列表
-GET {{baseUrl}}/sys/role
-Authorization: {{Authorization}}
-
-
-
-### 菜单-列表
-GET {{baseUrl}}/sys/menu/nav
-Authorization: {{Authorization}}
-
-### 菜单-新增
-POST {{baseUrl}}/sys/menu
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "name": "test",
-  "status": 0,
-  "type": 1
-}
-
-### 菜单-删除
-DELETE {{baseUrl}}/sys/menu?ids=29
-Authorization: {{Authorization}}
-
-### 菜单-修改
-PUT {{baseUrl}}/sys/menu
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "id": 29,
-  "name": "testtt",
-  "status": 0,
-  "type": 1
-}
-
-### 菜单-列表
-GET {{baseUrl}}/sys/menu?pageNum=2
-Authorization: {{Authorization}}
-
-
-
-### 数据字典类型-新增
-POST {{baseUrl}}/sys/dict-type
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "dictType": "test",
-  "dictName": "test",
-  "orderNum": 1
-}
-
-### 数据字典类型-删除
-DELETE {{baseUrl}}/sys/dict-type?ids=2
-Authorization: {{Authorization}}
-
-### 数据字典类型-修改
-PUT {{baseUrl}}/sys/dict-type
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "id": 2,
-  "dictType": "testttt",
-  "dictName": "test",
-  "orderNum": 1
-}
-
-### 数据字典类型-列表
-GET {{baseUrl}}/sys/dict-type
-Authorization: {{Authorization}}
-
-
-
-### 数据字典值-新增
-POST {{baseUrl}}/sys/dict-data
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "dictTypeId": 1,
-  "dictLabel": "test",
-  "dictValue": 123,
-  "orderNum": 1
-}
-
-### 数据字典值-删除
-DELETE {{baseUrl}}/sys/dict-data?ids=3
-Authorization: {{Authorization}}
-
-### 数据字典值-修改
-PUT {{baseUrl}}/sys/dict-data
-Authorization: {{Authorization}}
-Content-Type: application/json
-
-{
-  "id": 3,
-  "dictTypeId": 1,
-  "dictLabel": "testttt",
-  "dictValue": 123,
-  "orderNum": 1
-}
-
-### 数据字典值-列表
-GET {{baseUrl}}/sys/dict-data
-Authorization: {{Authorization}}
-
-
-
-
-
 ### 文章-列表
-GET {{baseUrl}}/sys/post
+GET {{baseUrl}}/admin/post
 Authorization: {{Authorization}}
 
 
 ### 文章-详情
-GET {{baseUrl}}/sys/post/1
+GET {{baseUrl}}/admin/post/1
 
 
-### 文章-列表
-GET {{baseUrl}}/post
-
-
-### 数据字典-所有
-GET {{baseUrl}}/sys/dict-type/all
-
-
-### 标签-所有
-GET {{baseUrl}}/sys/tag/all
-
-### 标签-新增
-POST {{baseUrl}}/sys/tag
+### 文章-新增
+POST {{baseUrl}}/admin/post
 Authorization: {{Authorization}}
 Content-Type: application/json
 
 {
-  "name": "test"
+  "title": "test2",
+  "description": "a test post",
+  "tagIds": [1, 2, 3],
+  "draft": false,
+  "comment": false,
+  "content": "testtesttesttesttesttesttesttesttesttest"
+}
+
+
+
+### 标签-所有
+GET {{baseUrl}}/admin/tag/all
+Authorization: {{Authorization}}
+
+
+
+### 标签-新增
+POST {{baseUrl}}/admin/tag
+Authorization: {{Authorization}}
+Content-Type: application/json
+
+{
+  "name": "test5"
 }
 
 ### 标签-修改

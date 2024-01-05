@@ -26,4 +26,9 @@ public class AdminEntity extends BaseEntity implements UserEntity {
      */
     private String remark;
 
+    /**
+     * 关于
+     */
+    private String about;
+
 }

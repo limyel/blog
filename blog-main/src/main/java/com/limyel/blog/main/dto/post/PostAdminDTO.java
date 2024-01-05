@@ -22,6 +22,8 @@ public class PostAdminDTO {
 
     private Boolean comment;
 
+    private Boolean top;
+
     private LocalDateTime publishTime;
 
     private String content;

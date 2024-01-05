@@ -31,7 +31,7 @@ public class JwtUtil {
         TokenPayload payload = new TokenPayload();
         payload.setId(claims.getId());
         payload.setExpiration(claims.getExpiration());
-        payload.setAdminId((Long) claims.get(JWT_PAYLOAD));
+        payload.setAdminId(claims.get(JWT_PAYLOAD, Long.class));
         return payload;
     }
 

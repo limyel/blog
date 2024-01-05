@@ -36,7 +36,7 @@ public class PostService {
     public PageData<PostSimpleVO> page(PostPageDTO dto) {
         // todo tag 不存在
         Page<PostEntity> page = new Page<>(dto.getPageNum(), dto.getPageSize());
-        postDao.selectPageSql(page, dto.getTagIds());
+        postDao.selectPageSql(page, dto.getTagId());
         List<PostEntity> records = page.getRecords();
         setTags(records);
         setCommentNum(records);
@@ -58,13 +58,13 @@ public class PostService {
     public Map<Integer, List<PostArchiveVO>> archive() {
         LambdaQueryWrapper<PostEntity> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper.eq(PostEntity::getDraft, false);
-        queryWrapper.orderByDesc(PostEntity::getCreateTime);
+        queryWrapper.orderByDesc(PostEntity::getPublishTime);
         List<PostEntity> postList = postDao.selectList(queryWrapper);
 
         Map<Integer, List<PostArchiveVO>> result = new HashMap<>();
         postList.forEach(post -> {
-            LocalDateTime createTime = post.getCreateTime();
-            Integer year = createTime.getYear();
+            LocalDateTime publishTime = post.getPublishTime();
+            Integer year = publishTime.getYear();
             if (!result.containsKey(year)) {
                 result.put(year, new ArrayList<>());
             }

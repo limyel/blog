@@ -20,7 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
+@Component
 public class LoginInterceptor implements HandlerInterceptor {
+
+    @Autowired
+    private BlogConfig blogConfig;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -33,9 +40,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (isLoginFree(handler)) {
             return true;
         }
-
-        BlogConfig blogConfig = SpringContextUtil.getBean(BlogConfig.class);
-        UserService userService = SpringContextUtil.getBean(UserService.class);
 
         String authorization = request.getHeader(blogConfig.getJwt().getHeader());
         String token = authorization.replace(blogConfig.getJwt().getStart(), "").trim();
