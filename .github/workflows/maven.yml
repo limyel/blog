@@ -35,7 +35,7 @@ jobs:
           # 脚本 推送新构建的镜像到仓库
           script: |
             docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
-            cp /home/ubuntu/config/blog-pro.yaml /home/ubuntu/blog/blog-startup/src/main/resources/application-pro.yaml
+            cp /home/ubuntu/config/blog-pro.yml /home/ubuntu/blog/blog-startup/src/main/resources/application-pro.yml
             
             rm /home/ubuntu/blog/blog-common/src/main/resources/jwt_rsa
             rm /home/ubuntu/blog/blog-common/src/main/resources/jwt_rsa.pub
