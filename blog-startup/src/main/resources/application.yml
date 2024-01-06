@@ -12,7 +12,7 @@ server:
 
 spring:
   profiles:
-    active: local
+    active: pro
   messages:
     encoding: UTF-8
     basename: i18n/message
