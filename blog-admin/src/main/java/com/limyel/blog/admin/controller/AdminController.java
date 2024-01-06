@@ -4,15 +4,10 @@ import com.limyel.blog.admin.dto.AboutDTO;
 import com.limyel.blog.admin.dto.LoginDTO;
 import com.limyel.blog.admin.service.AdminService;
 import com.limyel.blog.admin.vo.TokenVO;
-import com.limyel.blog.common.constant.BlogConstant;
-import com.limyel.blog.common.util.ThreadLocalUtil;
 import com.limyel.blog.security.annotation.LoginRequired;
-import com.limyel.blog.security.config.UserEntity;
 import com.limyel.blog.web.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 /**
  *
