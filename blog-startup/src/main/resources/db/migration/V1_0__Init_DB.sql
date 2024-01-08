@@ -1,4 +1,4 @@
-CREATE TABLE `admin` (
+CREATE TABLE `sys_admin` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `username` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '用户名',
     `password` varchar(256) COLLATE utf8mb4_bin NOT NULL COMMENT '密码',

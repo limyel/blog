@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@TableName("admin")
+@TableName("sys_admin")
 public class AdminEntity extends BaseEntity implements UserEntity {
 
     /**
