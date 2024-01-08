@@ -68,3 +68,5 @@ jobs:
             docker image rm ${{ secrets.DOCKER_REPOSITORY }}:latest
             docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
             docker run -d -p 8000:8080 --name blog ${{ secrets.DOCKER_REPOSITORY }}:latest
+            
+            rm -rf /home/ubuntu/blog
