@@ -1,4 +1,4 @@
-package com.limyel.blog.web.pojo;
+package com.limyel.blog.mybatis.pojo;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Getter;

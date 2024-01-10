@@ -13,7 +13,7 @@ import com.limyel.blog.main.vo.post.PostDetailVO;
 import com.limyel.blog.main.vo.post.PostSimpleVO;
 import com.limyel.blog.main.vo.post.PostVO;
 import com.limyel.blog.main.vo.tag.TagVO;
-import com.limyel.blog.web.pojo.PageData;
+import com.limyel.blog.mybatis.pojo.PageData;
 import com.limyel.blog.web.pojo.PageParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,7 @@ import com.limyel.blog.main.dto.post.PostAdminDTO;
 import com.limyel.blog.main.service.PostService;
 import com.limyel.blog.main.vo.post.PostVO;
 import com.limyel.blog.security.annotation.LoginRequired;
-import com.limyel.blog.web.pojo.PageData;
+import com.limyel.blog.mybatis.pojo.PageData;
 import com.limyel.blog.web.pojo.PageParam;
 import com.limyel.blog.web.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;

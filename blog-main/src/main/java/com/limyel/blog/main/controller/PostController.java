@@ -1,12 +1,11 @@
 package com.limyel.blog.main.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.limyel.blog.main.dto.post.PostPageDTO;
 import com.limyel.blog.main.service.PostService;
 import com.limyel.blog.main.vo.post.PostArchiveVO;
 import com.limyel.blog.main.vo.post.PostDetailVO;
 import com.limyel.blog.main.vo.post.PostSimpleVO;
-import com.limyel.blog.web.pojo.PageData;
+import com.limyel.blog.mybatis.pojo.PageData;
 import com.limyel.blog.web.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

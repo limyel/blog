@@ -6,7 +6,7 @@ import com.limyel.blog.main.dao.TagDao;
 import com.limyel.blog.main.dto.tag.TagAdminDTO;
 import com.limyel.blog.main.entity.TagEntity;
 import com.limyel.blog.main.vo.tag.TagVO;
-import com.limyel.blog.web.pojo.PageData;
+import com.limyel.blog.mybatis.pojo.PageData;
 import com.limyel.blog.web.pojo.PageParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
