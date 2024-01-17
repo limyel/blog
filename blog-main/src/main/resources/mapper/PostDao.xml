@@ -9,6 +9,7 @@
                 inner join main_post_tag t2 on t2.post_id = t1.id and t2.tag_id = #{tagId}
             </if>
             where t1.draft = 0
+        order by t1.publish_time desc
     </select>
 
 </mapper>
