@@ -2,16 +2,14 @@ package com.limyel.blog.main.dao;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.limyel.blog.main.entity.PostEntity;
+import com.limyel.blog.main.entity.PostDO;
 import com.limyel.blog.mybatis.dao.BaseDao;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 @Mapper
-public interface PostDao extends BaseDao<PostEntity> {
+public interface PostDao extends BaseDao<PostDO> {
 
-    IPage<PostEntity> selectPageSql(Page<PostEntity> page, @Param("tagId") Long tagId);
+    IPage<PostDO> selectPageSql(Page<PostDO> page, @Param("tagId") Long tagId);
 
 }

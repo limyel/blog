@@ -34,7 +34,6 @@ Content-Type: application/json
   "description": "a test post",
   "tagIds": [1, 2, 3],
   "draft": false,
-  "comment": false,
   "content": "testtesttesttesttesttesttesttesttesttest"
 }
 

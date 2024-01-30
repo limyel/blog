@@ -15,8 +15,6 @@ public class PostSimpleVO extends PostVO {
 
     private Boolean top;
 
-    private Long commentNum;
-
     // todo 更新时间、更新记录
 
 }

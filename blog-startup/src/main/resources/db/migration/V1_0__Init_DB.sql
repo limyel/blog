@@ -1,15 +1,15 @@
 CREATE TABLE `sys_admin` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `username` varchar(64) COLLATE utf8mb4_bin NOT NULL COMMENT '用户名',
-    `password` varchar(256) COLLATE utf8mb4_bin NOT NULL COMMENT '密码',
+    `username` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名',
+    `password` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '密码',
     `about` text DEFAULT NULL COMMENT '关于',
-    `remark` varchar(512) COLLATE utf8mb4_bin DEFAULT '' COMMENT '备注',
+    `remark` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '备注',
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`) USING BTREE,
     UNIQUE KEY `uk_username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='管理员';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='管理员';
 
 
 CREATE TABLE `main_post` (
@@ -26,7 +26,7 @@ CREATE TABLE `main_post` (
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='文章';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章';
 
 
 CREATE TABLE `main_tag` (
@@ -36,7 +36,7 @@ CREATE TABLE `main_tag` (
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='标签';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='标签';
 
 
 CREATE TABLE `main_post_tag` (
@@ -48,7 +48,7 @@ CREATE TABLE `main_post_tag` (
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`) USING BTREE,
     UNIQUE KEY `uk_post_tag` (`post_id`, `tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='文章标签';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章标签';
 
 
 CREATE TABLE `main_link` (
@@ -59,24 +59,6 @@ CREATE TABLE `main_link` (
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
     PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='链接';
-
-
-CREATE TABLE `main_comment` (
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `nickname` varchar(64) DEFAULT NULL COMMENT '昵称',
-    `email` varchar(256) DEFAULT NULL COMMENT '邮箱',
-    `post_id` bigint NOT NULL COMMENT '文章ID',
-    `pid` bigint DEFAULT NULL COMMENT '上级评论ID',
-    `ip` varchar(64) NOT NULL COMMENT 'IP地址',
-    `content` varchar(2048) DEFAULT NULL COMMENT '内容',
-    `admin` bit NOT NULL DEFAULT b'0' COMMENT '是否为admin评论',
-    `type` tinyint NOT NULL DEFAULT '0' COMMENT '类型，0:留言，1:评论',
-    `status` tinyint DEFAULT '0' COMMENT '状态，0:待审核，1:审核通过，2:审核不通过',
-    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
-    PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='评论';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='链接';
 
 

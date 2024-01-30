@@ -20,8 +20,6 @@ public class PostAdminDTO {
 
     private Boolean draft;
 
-    private Boolean comment;
-
     private Boolean top;
 
     private LocalDateTime publishTime;

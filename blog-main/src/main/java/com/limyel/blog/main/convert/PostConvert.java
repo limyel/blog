@@ -1,7 +1,7 @@
 package com.limyel.blog.main.convert;
 
 import com.limyel.blog.main.dto.post.PostAdminDTO;
-import com.limyel.blog.main.entity.PostEntity;
+import com.limyel.blog.main.entity.PostDO;
 import com.limyel.blog.main.vo.post.PostArchiveVO;
 import com.limyel.blog.main.vo.post.PostDetailVO;
 import com.limyel.blog.main.vo.post.PostSimpleVO;
@@ -14,16 +14,16 @@ public interface PostConvert {
 
     PostConvert INSTANCE = Mappers.getMapper(PostConvert.class);
 
-    PostVO toVO(PostEntity post);
+    PostVO toVO(PostDO post);
 
-    PostSimpleVO toSimpleVO(PostEntity post);
+    PostSimpleVO toSimpleVO(PostDO post);
 
-    PostArchiveVO toArchiveVO(PostEntity post);
+    PostArchiveVO toArchiveVO(PostDO post);
 
-    PostDetailVO toDetailVO(PostEntity post);
+    PostDetailVO toDetailVO(PostDO post);
 
-    PostAdminDTO toAdminDTO(PostEntity post);
+    PostAdminDTO toAdminDTO(PostDO post);
 
-    PostEntity toEntity(PostAdminDTO dto);
+    PostDO toEntity(PostAdminDTO dto);
 
 }

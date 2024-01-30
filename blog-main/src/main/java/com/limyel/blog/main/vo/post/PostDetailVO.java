@@ -13,6 +13,4 @@ public class PostDetailVO extends PostVO {
 
     private String content;
 
-    private Long commentNum;
-
 }

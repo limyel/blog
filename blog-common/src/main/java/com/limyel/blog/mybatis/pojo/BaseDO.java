@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public abstract class BaseEntity {
+public abstract class BaseDO {
 
     @TableId
     private Long id;

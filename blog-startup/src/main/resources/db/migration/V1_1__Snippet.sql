@@ -1,0 +1,1 @@
+ALTER TABLE `main_post` DROP `comment`;

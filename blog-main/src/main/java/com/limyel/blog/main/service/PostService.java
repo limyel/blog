@@ -7,7 +7,7 @@ import com.limyel.blog.main.convert.PostConvert;
 import com.limyel.blog.main.dao.PostDao;
 import com.limyel.blog.main.dto.post.PostAdminDTO;
 import com.limyel.blog.main.dto.post.PostPageDTO;
-import com.limyel.blog.main.entity.PostEntity;
+import com.limyel.blog.main.entity.PostDO;
 import com.limyel.blog.main.vo.post.PostArchiveVO;
 import com.limyel.blog.main.vo.post.PostDetailVO;
 import com.limyel.blog.main.vo.post.PostSimpleVO;
@@ -30,16 +30,12 @@ public class PostService {
     @Autowired
     private PostTagService postTagService;
 
-    @Autowired
-    private CommentService commentService;
-
     public PageData<PostSimpleVO> page(PostPageDTO dto) {
         // todo tag 不存在
-        Page<PostEntity> page = new Page<>(dto.getPageNum(), dto.getPageSize());
+        Page<PostDO> page = new Page<>(dto.getPageNum(), dto.getPageSize());
         postDao.selectPageSql(page, dto.getTagId());
-        List<PostEntity> records = page.getRecords();
+        List<PostDO> records = page.getRecords();
         setTags(records);
-        setCommentNum(records);
 
         List<PostSimpleVO> list = records.stream()
                 .map(PostConvert.INSTANCE::toSimpleVO)
@@ -48,18 +44,17 @@ public class PostService {
     }
 
     public PostDetailVO get(Long id) {
-        PostEntity post = postDao.selectById(id);
+        PostDO post = postDao.selectById(id);
         setTags(Collections.singletonList(post));
-        setCommentNum(Collections.singletonList(post));
 
         return PostConvert.INSTANCE.toDetailVO(post);
     }
 
     public Map<Integer, List<PostArchiveVO>> archive() {
-        LambdaQueryWrapper<PostEntity> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper.eq(PostEntity::getDraft, false);
-        queryWrapper.orderByDesc(PostEntity::getPublishTime);
-        List<PostEntity> postList = postDao.selectList(queryWrapper);
+        LambdaQueryWrapper<PostDO> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.eq(PostDO::getDraft, false);
+        queryWrapper.orderByDesc(PostDO::getPublishTime);
+        List<PostDO> postList = postDao.selectList(queryWrapper);
 
         Map<Integer, List<PostArchiveVO>> result = new HashMap<>();
         postList.forEach(post -> {
@@ -77,11 +72,10 @@ public class PostService {
     // admin
 
     public PageData<PostVO> page(PageParam pageParam) {
-        Page<PostEntity> page = new Page<>(pageParam.getPageNum(), pageParam.getPageSize());
+        Page<PostDO> page = new Page<>(pageParam.getPageNum(), pageParam.getPageSize());
         postDao.selectPage(page, null);
-        List<PostEntity> records = page.getRecords();
+        List<PostDO> records = page.getRecords();
         setTags(records);
-        setCommentNum(records);
 
         List<PostVO> list = records.stream()
                 .map(PostConvert.INSTANCE::toVO)
@@ -90,21 +84,21 @@ public class PostService {
     }
 
     public PostAdminDTO adminGet(Long id) {
-        PostEntity post = postDao.selectById(id);
+        PostDO post = postDao.selectById(id);
         PostAdminDTO result = PostConvert.INSTANCE.toAdminDTO(post);
         setTagIds(result);
         return result;
     }
 
     public void add(PostAdminDTO dto) {
-        PostEntity post = PostConvert.INSTANCE.toEntity(dto);
+        PostDO post = PostConvert.INSTANCE.toEntity(dto);
         postDao.insert(post);
 
         postTagService.addPostTags(post.getId(), dto.getTagIds());
     }
 
     public void update(PostAdminDTO dto) {
-        PostEntity post = PostConvert.INSTANCE.toEntity(dto);
+        PostDO post = PostConvert.INSTANCE.toEntity(dto);
         postDao.updateById(post);
 
         postTagService.deleteByPost(post.getId());
@@ -118,12 +112,8 @@ public class PostService {
 
     // private
 
-    private void setTags(List<PostEntity> posts) {
+    private void setTags(List<PostDO> posts) {
         posts.forEach(post -> post.setTags(postTagService.listTagByPost(post.getId())));
-    }
-
-    private void setCommentNum(List<PostEntity> posts) {
-        posts.forEach(post -> post.setCommentNum(commentService.countByPost(post.getId())));
     }
 
     private void setTagIds(PostAdminDTO post) {

@@ -3,7 +3,7 @@ package com.limyel.blog.main.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.limyel.blog.main.vo.tag.TagVO;
-import com.limyel.blog.mybatis.pojo.BaseEntity;
+import com.limyel.blog.mybatis.pojo.BaseDO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @TableName("main_post")
-public class PostEntity extends BaseEntity {
+public class PostDO extends BaseDO {
 
     /**
      * 标题
@@ -44,11 +44,6 @@ public class PostEntity extends BaseEntity {
     private Boolean top;
 
     /**
-     * 是否可评论
-     */
-    private Boolean comment;
-
-    /**
      * 草稿
      */
     private Boolean draft;
@@ -61,8 +56,5 @@ public class PostEntity extends BaseEntity {
 
     @TableField(exist = false)
     private List<TagVO> tags;
-
-    @TableField(exist = false)
-    private Long commentNum;
 
 }

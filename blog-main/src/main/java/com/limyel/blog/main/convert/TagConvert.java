@@ -1,7 +1,7 @@
 package com.limyel.blog.main.convert;
 
 import com.limyel.blog.main.dto.tag.TagAdminDTO;
-import com.limyel.blog.main.entity.TagEntity;
+import com.limyel.blog.main.entity.TagDO;
 import com.limyel.blog.main.vo.tag.TagVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -11,10 +11,10 @@ public interface TagConvert {
 
     TagConvert INSTANCE = Mappers.getMapper(TagConvert.class);
 
-    TagVO toVO(TagEntity tag);
+    TagVO toVO(TagDO tag);
 
     TagAdminDTO toDTO(TagVO vo);
 
-    TagEntity toEntity(TagAdminDTO dto);
+    TagDO toEntity(TagAdminDTO dto);
 
 }
