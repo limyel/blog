@@ -1,7 +1,6 @@
 package com.limyel.blog.main.convert;
 
 import com.limyel.blog.main.dto.tag.TagAdminDTO;
-import com.limyel.blog.main.entity.TagDO;
 import com.limyel.blog.main.vo.tag.TagVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

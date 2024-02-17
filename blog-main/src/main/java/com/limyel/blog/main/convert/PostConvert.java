@@ -1,7 +1,6 @@
 package com.limyel.blog.main.convert;
 
 import com.limyel.blog.main.dto.post.PostAdminDTO;
-import com.limyel.blog.main.entity.PostDO;
 import com.limyel.blog.main.vo.post.PostArchiveVO;
 import com.limyel.blog.main.vo.post.PostDetailVO;
 import com.limyel.blog.main.vo.post.PostSimpleVO;
