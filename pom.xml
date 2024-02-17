@@ -15,6 +15,10 @@
         <version>2.7.18</version>
     </parent>
 
+    <dependencyManagement>
+
+    </dependencyManagement>
+
     <modules>
         <module>blog-common</module>
         <module>blog-admin</module>

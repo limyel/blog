@@ -12,15 +12,18 @@ CREATE TABLE `sys_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='管理员';
 
 
-CREATE TABLE `main_post` (
+CREATE TABLE `main_article` (
     `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-    `title` varchar(128) NOT NULL COMMENT '标题',
-    `view_num` int NOT NULL DEFAULT '0' COMMENT '浏览量',
-    `content` text DEFAULT NULL COMMENT '内容',
-    `description` varchar(1024) DEFAULT NULL COMMENT '描述',
+    `title` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
+    `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '内容',
+    `type` tinyint NOT NULL DEFAULT 1 COMMENT '类型',
+    `summary` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '摘要',
+    `category_id` bigint DEFAULT NULL COMMENT '所属分类ID',
     `top` bit NOT NULL DEFAULT b'0' COMMENT '置顶',
+    `status` tinyint NOT NULL DEFAULT 1 COMMENT '状态',
+    `comment_num` int NOT NULL DEFAULT 0 COMMENT '评论数',
+    `view_num` int NOT NULL DEFAULT 0 COMMENT '浏览量',
     `comment` bit NOT NULL DEFAULT b'0' COMMENT '是否可评论',
-    `draft` bit NOT NULL DEFAULT b'0' COMMENT '是否为草稿',
     `publish_time` datetime DEFAULT NULL COMMENT '发布时间',
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
