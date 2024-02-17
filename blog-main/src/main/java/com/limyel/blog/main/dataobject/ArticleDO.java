@@ -16,11 +16,6 @@ import java.time.LocalDateTime;
 public class ArticleDO extends BaseDO {
 
     /**
-     * id
-     */
-    private Long id;
-    
-    /**
      * 标题
      */
     private String title;
@@ -64,31 +59,6 @@ public class ArticleDO extends BaseDO {
      * 发布时间
      */
     private LocalDateTime publishTime;
-    
-    /**
-     * 创建者
-     */
-    private Long createBy;
-    
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-    
-    /**
-     * 更新者
-     */
-    private Long updateBy;
-    
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateTime;
-    
-    /**
-     * 删除时间
-     */
-    private LocalDateTime deleteTime;
-    
+
 }
 
