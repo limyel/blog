@@ -1,7 +1,5 @@
 package com.limyel.blog.common.util;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
@@ -23,23 +21,6 @@ public class ConvertUtil {
         }
         BeanUtils.copyProperties(source, target);
         return target;
-    }
-
-    public static <T> IPage<T> sourceToPageTarget(IPage<?> page, Class<T> clazz) {
-        List<?> records = page.getRecords();
-        List<T> newRecords = ConvertUtil.sourceToTarget(records, record -> {
-            T target;
-            try {
-                target = clazz.getConstructor().newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new RuntimeException();
-            }
-            BeanUtils.copyProperties(record, target);
-            return target;
-        });
-        IPage<T> result = Page.of(page.getCurrent(), page.getSize());
-        return result.setTotal(page.getTotal()).setRecords(newRecords);
     }
 
     public static <T> List<T> sourceToTarget(List<?> sourceList, Class<T> clazz) {
