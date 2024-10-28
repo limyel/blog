@@ -4,9 +4,10 @@
     <title></title>
     <link rel="stylesheet" th:href="@{'/css/reset.css'}"/>
     <link rel="stylesheet" th:href="@{'/css/main.css'}"/>
-    <link rel="stylesheet" th:href="@{'/css/header.css'}">
-    <link rel="stylesheet" th:href="@{'/css/tags.css'}">
-    <link rel="stylesheet" th:href="@{'/css/content.css'}">
+    <link rel="stylesheet" th:href="@{'/css/header.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/tags.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/content.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/page.css'}"/>
 </head>
 <body>
     <div class="main flex flex-column">
@@ -14,6 +15,7 @@
         <div class="main-body">
             <div th:replace="component/tags"></div>
             <div th:replace="component/content"></div>
+            <div th:replace="component/page"></div>
         </div>
         <div th:replace="component/footer"></div>
     </div>
