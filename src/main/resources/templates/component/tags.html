@@ -3,53 +3,8 @@
         " fklsjd "
     </div>
     <div class="flex flex-row">
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#森哎呀</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#疯狂三点了</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
-        </div>
-        <div class="tags-item mr-1">
-            <a href="#">#aaaaa</a>
+        <div class="tags-item mr-1" th:each="tag : ${tagList}">
+            <a href="#" th:text="'#' + ${tag.name}"></a>
         </div>
     </div>
 </div>

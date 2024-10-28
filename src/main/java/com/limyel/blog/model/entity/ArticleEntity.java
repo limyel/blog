@@ -21,9 +21,6 @@ public class ArticleEntity extends BaseEntity {
 
     private String slug;
 
-    @Column(name = "`desc`")
-    private String desc;
-
     private String content;
 
     private Boolean top;

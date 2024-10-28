@@ -1,94 +1,10 @@
 <div class="content flex flex-column" th:fragment="content">
-    <div class="content-year mt-2 mb-2">
-        2024
-    </div>
-    <div class="mb-1">
-        <div class="content-month mb-1">
-            十月
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">10-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">10-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">10-27</div>
-            <div><a href="#">你放茶赛将哎烦哎jdfaoidjo你烦哎哦单反</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">10-27</div>
-            <div><a href="#">jflaksdjfoiajsdoifj</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">10-27</div>
-            <div><a href="#">你很安抚拉空单反差哦姐夫戳爱死就哦沉默沉默中的</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">10-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-    </div>
-
-    <div class="mb-1">
-        <div class="content-month mb-1">
-            九月
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">9-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">9-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">9-27</div>
-            <div><a href="#">你放茶赛将哎烦哎jdfaoidjo你烦哎哦单反</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">9-27</div>
-            <div><a href="#">jflaksdjfoiajsdoifj</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">9-27</div>
-            <div><a href="#">你很安抚拉空单反差哦姐夫戳爱死就哦沉默沉默中的</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">9-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-    </div>
-
-    <div class="mb-1">
-        <div class="content-month mb-1">
-            八月
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">8-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">8-27</div>
-            <div><a href="#">你好十月</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">8-27</div>
-            <div><a href="#">你放茶赛将哎烦哎jdfaoidjo你烦哎哦单反</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">8-27</div>
-            <div><a href="#">jflaksdjfoiajsdoifj</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">8-27</div>
-            <div><a href="#">你很安抚拉空单反差哦姐夫戳爱死就哦沉默沉默中的</a></div>
-        </div>
-        <div class="content-item flex flex-row">
-            <div class="mr-2">8-27</div>
-            <div><a href="#">你好十月</a></div>
+    <div class="content-year mt-2 mb-2" th:text="${postList.year}"></div>
+    <div class="mb-1" th:each="item : ${postList.list}">
+        <div class="content-month mb-1" th:text="${item.month}"></div>
+        <div class="content-item flex flex-row" th:each="article : ${item.articles}">
+            <div class="mr-2" th:text="${article.createTime}"></div>
+            <div><a href="#" th:text="${article.title}"></a></div>
         </div>
     </div>
 </div>
