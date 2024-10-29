@@ -10,14 +10,12 @@
     <link rel="stylesheet" th:href="@{'/css/page.css'}"/>
 </head>
 <body>
-    <div class="main flex flex-column">
-        <header th:replace="component/header"></header>
-        <div class="main-body flex flex-column">
-            <div th:replace="component/tags"></div>
-            <div th:replace="component/content"></div>
-            <div th:replace="component/page"></div>
-        </div>
-        <div th:replace="component/footer"></div>
+<div class="main flex flex-column">
+    <header th:replace="component/header"></header>
+    <div class="main-body flex flex-column">
+
     </div>
+    <div th:replace="component/footer"></div>
+</div>
 </body>
 </html>

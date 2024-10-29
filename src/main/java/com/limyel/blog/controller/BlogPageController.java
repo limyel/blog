@@ -3,12 +3,12 @@ package com.limyel.blog.controller;
 import com.limyel.blog.model.dto.PostListDTO;
 import com.limyel.blog.service.ArticleService;
 import com.limyel.blog.service.TagService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,11 +18,35 @@ public class BlogPageController {
 
     private final TagService tagService;
 
-    @RequestMapping("/")
-    public ModelAndView index(PostListDTO dto) {
+    @GetMapping("/")
+    public ModelAndView index(PostListDTO dto, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("index");
+        mv.addObject("request", request);
         mv.addObject("postList", articleService.list(dto));
         mv.addObject("tagList", tagService.list());
+        mv.addObject("yearList", articleService.listYear());
+        return mv;
+    }
+
+    @GetMapping("/count-days")
+    public ModelAndView countDays(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("countdays");
+        mv.addObject("request", request);
+        return mv;
+    }
+
+    @GetMapping("/about")
+    public ModelAndView about(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("about");
+        mv.addObject("request", request);
+        return mv;
+    }
+
+    @GetMapping("/article/{slug}")
+    public ModelAndView getArticle(@PathVariable("slug") String slug, HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("article");
+        mv.addObject("request", request);
+        mv.addObject("article", articleService.getDetail(slug));
         return mv;
     }
 

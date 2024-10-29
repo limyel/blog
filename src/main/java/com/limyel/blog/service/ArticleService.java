@@ -4,22 +4,59 @@ import com.limyel.blog.dao.ArticleRepository;
 import com.limyel.blog.model.dto.PostListDTO;
 import com.limyel.blog.model.entity.ArticleEntity;
 import com.limyel.blog.model.vo.ArticleListVO;
+import com.limyel.blog.model.vo.ArticleVO;
+import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Document;
+import com.vladsch.flexmark.util.data.MutableDataSet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
+
+    private final TagService tagService;
+
+    public ArticleVO getDetail(String slug) {
+        ArticleEntity article = articleRepository.findBySlug(slug);
+        if (Objects.isNull(article)) {
+            throw new RuntimeException("文章不存在");
+        }
+
+        ArticleVO result = new ArticleVO();
+        result.setTitle(article.getTitle());
+
+        MutableDataSet options = new MutableDataSet();
+        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
+        Parser parser = Parser.builder(options).build();
+        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+        Document document = parser.parse(article.getContent());
+        result.setContent(renderer.render(document));
+
+        result.setTags(tagService.listByArticle(article.getId()));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        result.setCreateTime(formatter.format(article.getCreateTime()));
+        result.setUpdateTime(formatter.format(article.getUpdateTime()));
+
+        return result;
+    }
 
     public ArticleListVO list(PostListDTO dto) {
         LocalDateTime startTime = LocalDateTime.of(dto.getYear(), 1, 1, 0, 0);
@@ -28,6 +65,9 @@ public class ArticleService {
 
         ArticleListVO result = new ArticleListVO();
         result.setYear(dto.getYear());
+        if (StringUtils.hasText(dto.getTag())) {
+            result.setTag(dto.getTag());
+        }
 
         Map<Integer, List<ArticleListVO.Article>> map = new HashMap<>();
         articles.forEach(item -> {
@@ -37,7 +77,9 @@ public class ArticleService {
             ArticleListVO.Article article = new ArticleListVO.Article();
             article.setTitle(item.getTitle());
             article.setSlug(item.getSlug());
-            article.setCreateTime(getCreateTime(item.getCreateTime()));
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd");
+            article.setCreateTime(formatter.format(item.getCreateTime()));
 
             list.add(article);
         });
@@ -58,6 +100,10 @@ public class ArticleService {
         return result;
     }
 
+    public List<Integer> listYear() {
+        return articleRepository.findYearByCreateTime();
+    }
+
     private String getMonth(Integer monthValue) {
         return switch (monthValue) {
             case 1 -> "一月";
@@ -74,10 +120,6 @@ public class ArticleService {
             case 12 -> "十二月";
             default -> null;
         };
-    }
-
-    private String getCreateTime(LocalDateTime time) {
-        return time.getMonthValue() + "-" + time.getDayOfMonth();
     }
 
 }

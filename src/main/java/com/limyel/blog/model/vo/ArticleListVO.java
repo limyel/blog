@@ -3,12 +3,13 @@ package com.limyel.blog.model.vo;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 public class ArticleListVO {
 
     private Integer year;
+
+    private String tag;
 
     private List<ArticleListItem> list;
 

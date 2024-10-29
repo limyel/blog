@@ -5,14 +5,14 @@
     <div class="flex flex-row justify-between mt-2 mb-2">
         <div>探索世界</div>
         <div class="flex flex-row">
-            <ul class="mr-1 nav-item-active">
-                <li><a href="#">文章</a></li>
+            <ul th:class="${request.requestURI == '/' ? 'mr-1 nav-item-active' : 'mr-1 nav-item'}">
+                <li><a href="/">文章</a></li>
             </ul>
-            <ul class="mr-1 nav-item">
-                <li><a href="#">数日子</a></li>
+            <ul th:class="${request.requestURI == '/count-days' ? 'mr-1 nav-item-active' : 'mr-1 nav-item'}">
+                <li><a href="/count-days">数日子</a></li>
             </ul>
-            <ul class="nav-item">
-                <li><a href="#">关于</a></li>
+            <ul th:class="${request.requestURI == '/about' ? 'mr-1 nav-item-active' : 'mr-1 nav-item'}">
+                <li><a href="/about">关于</a></li>
             </ul>
         </div>
     </div>

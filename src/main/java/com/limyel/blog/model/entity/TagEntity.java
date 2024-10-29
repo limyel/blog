@@ -24,6 +24,11 @@ public class TagEntity extends BaseEntity {
     private String name;
 
     /**
+     * 标签 slug
+     */
+    private String slug;
+
+    /**
      * 备注
      */
     private String remark;
