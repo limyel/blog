@@ -7,6 +7,7 @@ import com.limyel.blog.service.ArticleService;
 import com.limyel.blog.service.TagService;
 import com.limyel.blog.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,12 +37,20 @@ public class AdminPageController {
     }
 
     @PostMapping("/do-login")
-    public String doLogin(@ModelAttribute LoginDTO dto) {
+    public String doLogin(@ModelAttribute LoginDTO dto, HttpSession session) {
         UserEntity user = userService.doLogin(dto);
         if (user == null) {
             return "redirect:/admin/login";
         }
+        session.setAttribute("user", user);
+        session.setAttribute("userId", user.getId());
         return "redirect:/admin/index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/admin/login";
     }
 
     @GetMapping("/index")
