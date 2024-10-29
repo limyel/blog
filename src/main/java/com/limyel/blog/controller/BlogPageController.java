@@ -46,7 +46,7 @@ public class BlogPageController {
     public ModelAndView getArticle(@PathVariable("slug") String slug, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("article");
         mv.addObject("request", request);
-        mv.addObject("article", articleService.getDetail(slug));
+        mv.addObject("article", articleService.get(slug));
         return mv;
     }
 

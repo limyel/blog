@@ -66,7 +66,7 @@ public class AdminPageController {
         mv.addObject("request", request);
         mv.addObject("tags", tagService.listAll());
         if (id != null) {
-
+            mv.addObject("article", articleService.get(id));
         } else {
             mv.addObject("article", new ArticleDTO());
         }
@@ -78,7 +78,7 @@ public class AdminPageController {
         if (dto.getId() == null) {
             articleService.create(dto);
         } else {
-
+            articleService.update(dto);
         }
         return "redirect:/admin/article";
     }

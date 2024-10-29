@@ -16,7 +16,6 @@ public class ArticleRepositoryTest {
     @Test
     public void testSaveArticle() {
         ArticleEntity article = new ArticleEntity();
-        article.setDesc("test");
         article.setSlug("test");
         article.setContent("test");
         article.setStatus(1);

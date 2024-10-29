@@ -4,6 +4,8 @@ import com.limyel.blog.dao.ArticleRepository;
 import com.limyel.blog.model.dto.ArticleDTO;
 import com.limyel.blog.model.dto.ArticleListDTO;
 import com.limyel.blog.model.entity.ArticleEntity;
+import com.limyel.blog.model.entity.ArticleTagEntity;
+import com.limyel.blog.model.entity.TagEntity;
 import com.limyel.blog.model.vo.ArticleListVO;
 import com.limyel.blog.model.vo.ArticleVO;
 import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
@@ -28,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,10 +47,21 @@ public class ArticleService {
         BeanUtils.copyProperties(dto, article);
         articleRepository.save(article);
 
+        articleTagService.deleteByArticle(article.getId());
         articleTagService.create(article.getId(), dto.getTags());
     }
 
-    public ArticleVO getDetail(String slug) {
+    public void update(ArticleDTO dto) {
+        Optional<ArticleEntity> optional = articleRepository.findById(dto.getId());
+        ArticleEntity article = optional.orElseThrow(() -> new RuntimeException("文章不存在"));
+        BeanUtils.copyProperties(dto, article);
+        articleRepository.save(article);
+
+        articleTagService.deleteByArticle(article.getId());
+        articleTagService.create(article.getId(), dto.getTags());
+    }
+
+    public ArticleVO get(String slug) {
         ArticleEntity article = articleRepository.findBySlug(slug);
         if (Objects.isNull(article)) {
             throw new RuntimeException("文章不存在");
@@ -70,6 +84,17 @@ public class ArticleService {
         result.setUpdateTime(formatter.format(article.getUpdateTime()));
 
         return result;
+    }
+
+    public ArticleDTO get(Long id) {
+        return articleRepository.findById(id).map(article -> {
+            ArticleDTO dto = new ArticleDTO();
+            BeanUtils.copyProperties(article, dto);
+            dto.setTags(articleTagService.listByArticle(article.getId()).stream()
+                    .map(ArticleTagEntity::getTagId)
+                    .toList());
+            return dto;
+        }).orElseThrow(() -> new RuntimeException("文章不存在"));
     }
 
     public ArticleListVO list(ArticleListDTO dto) {
