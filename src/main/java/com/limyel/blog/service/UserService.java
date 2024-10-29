@@ -1,6 +1,7 @@
 package com.limyel.blog.service;
 
 import com.limyel.blog.dao.UserReposiroty;
+import com.limyel.blog.model.dto.LoginDTO;
 import com.limyel.blog.model.entity.UserEntity;
 import com.limyel.blog.util.CryptUtil;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +13,9 @@ public class UserService {
 
     private final UserReposiroty userReposiroty;
 
-    public UserEntity doLogin(String username, String password) {
-        UserEntity user = userReposiroty.findByUsername(username);
-        boolean match = CryptUtil.match(password, user.getPassword());
+    public UserEntity doLogin(LoginDTO dto) {
+        UserEntity user = userReposiroty.findByUsername(dto.getUsername());
+        boolean match = CryptUtil.match(dto.getPassword(), user.getPassword());
         return match ? user : null;
     }
 }

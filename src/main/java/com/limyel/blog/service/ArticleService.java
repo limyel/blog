@@ -1,7 +1,8 @@
 package com.limyel.blog.service;
 
 import com.limyel.blog.dao.ArticleRepository;
-import com.limyel.blog.model.dto.PostListDTO;
+import com.limyel.blog.model.dto.ArticleDTO;
+import com.limyel.blog.model.dto.ArticleListDTO;
 import com.limyel.blog.model.entity.ArticleEntity;
 import com.limyel.blog.model.vo.ArticleListVO;
 import com.limyel.blog.model.vo.ArticleVO;
@@ -12,6 +13,9 @@ import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.ast.Document;
 import com.vladsch.flexmark.util.data.MutableDataSet;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -32,6 +36,16 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
 
     private final TagService tagService;
+
+    private final ArticleTagService articleTagService;
+
+    public void create(ArticleDTO dto) {
+        ArticleEntity article = new ArticleEntity();
+        BeanUtils.copyProperties(dto, article);
+        articleRepository.save(article);
+
+        articleTagService.create(article.getId(), dto.getTags());
+    }
 
     public ArticleVO getDetail(String slug) {
         ArticleEntity article = articleRepository.findBySlug(slug);
@@ -58,7 +72,7 @@ public class ArticleService {
         return result;
     }
 
-    public ArticleListVO list(PostListDTO dto) {
+    public ArticleListVO list(ArticleListDTO dto) {
         LocalDateTime startTime = LocalDateTime.of(dto.getYear(), 1, 1, 0, 0);
         LocalDateTime endTime = LocalDateTime.of(dto.getYear(), 12, 31, 23, 59);
         List<ArticleEntity> articles = articleRepository.findByCreateTimeBetweenOrderByCreateTimeDesc(startTime, endTime);
@@ -97,6 +111,12 @@ public class ArticleService {
                 .toList();
         result.setList(list);
 
+        return result;
+    }
+
+    public Page<ArticleEntity> page(int pageNum, int pageSize) {
+        PageRequest pageable = PageRequest.of(pageNum, pageSize);
+        Page<ArticleEntity> result = articleRepository.findAll(pageable);
         return result;
     }
 

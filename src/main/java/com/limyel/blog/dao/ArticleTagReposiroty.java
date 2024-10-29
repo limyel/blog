@@ -9,4 +9,6 @@ public interface ArticleTagReposiroty extends JpaRepository<ArticleTagEntity, Lo
 
     List<ArticleTagEntity> findByArticleId(Long articleId);
 
+    int deleteAllByArticleId(Long articleId);
+
 }

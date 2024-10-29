@@ -14,13 +14,18 @@
     <header th:replace="component/header"></header>
     <div class="main-body flex flex-column">
         <div>
-            <a href="/admin/article">文章管理</a>
-        </div>
-        <div>
-            <a href="/admin/countdays">数日子管理</a>
-        </div>
-        <div>
-            <a href="/admin/about">关于管理</a>
+            <div class="mb-2">
+                <a href="/admin/article/edit">新增文章</a>
+            </div>
+            <div>
+                <div class="flex flex-row justify-between mb-1" th:each="article: ${articlePage.content}">
+                    <div th:text="${ 'ID: ' + article.id + '   title: ' + article.title }"></div>
+                    <div>
+                        <a th:href="${ '/admin/article/edit/' + article.id }">编辑</a>
+                        <a th:href="${ '/admin/article/delete/' + article.id }">删除</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div th:replace="component/footer"></div>

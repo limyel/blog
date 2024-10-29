@@ -1,6 +1,6 @@
 package com.limyel.blog.controller;
 
-import com.limyel.blog.model.dto.PostListDTO;
+import com.limyel.blog.model.dto.ArticleListDTO;
 import com.limyel.blog.service.ArticleService;
 import com.limyel.blog.service.TagService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,10 +19,10 @@ public class BlogPageController {
     private final TagService tagService;
 
     @GetMapping("/")
-    public ModelAndView index(PostListDTO dto, HttpServletRequest request) {
+    public ModelAndView index(ArticleListDTO dto, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("index");
         mv.addObject("request", request);
-        mv.addObject("postList", articleService.list(dto));
+        mv.addObject("articleObj", articleService.list(dto));
         mv.addObject("tagList", tagService.list());
         mv.addObject("yearList", articleService.listYear());
         return mv;

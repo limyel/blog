@@ -33,6 +33,10 @@ public class TagService {
         return result;
     }
 
+    public List<TagEntity> listAll() {
+        return tagRepository.findAll();
+    }
+
     public List<TagListVO> listByArticle(Long articleId) {
         List<Long> tagIds = articleTagReposiroty.findByArticleId(articleId).stream()
                 .map(ArticleTagEntity::getTagId)
