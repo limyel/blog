@@ -1,7 +1,7 @@
 body {
     min-height: 100vh;
     background-color: #eff1f5;
-    font-family: 'MiSans' !important;
+    font-family: 'LXGW' !important;
     font-weight: 300;
 }
 * {
@@ -11,33 +11,21 @@ body {
 }
 
 @font-face {
-    font-family: 'MiSans';
-    src: url('../font/MiSans-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'MiSans';
-    src: url('../font/MiSans-Light.ttf') format('truetype');
+    font-family: 'LXGW';
+    src: url('../font/LXGWWenKaiMono-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
-    font-family: 'MiSans';
-    src: url('../font/MiSans-Medium.ttf') format('truetype');
+    font-family: 'LXGW';
+    src: url('../font/LXGWWenKaiMono-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
-    font-family: 'MiSans';
-    src: url('../font/MiSans-Normal.ttf') format('truetype');
+    font-family: 'LXGW';
+    src: url('../font/LXGWWenKaiMono-Regular.ttf') format('truetype');
     font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'MiSans';
-    src: url('../font/MiSans-Bold.ttf') format('truetype');
-    font-weight: bold;
     font-style: normal;
 }
 
