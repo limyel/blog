@@ -11,7 +11,7 @@ on:
 # 构建任务
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本
+    runs-on: ubuntu-22.04 # 使用ubuntu系统镜像运行自动化脚本
 
     # 构建任务的步骤
     steps:
