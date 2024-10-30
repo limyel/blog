@@ -4,6 +4,10 @@ server:
     threads:
       max: 1000
       min-spare: 30
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+      port-header: x-forwarded-port
   port: 8000
   servlet:
     session:
