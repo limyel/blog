@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "blog_tag")
+@Table(name = "tag")
 public class TagEntity extends BaseEntity {
 
     @Id

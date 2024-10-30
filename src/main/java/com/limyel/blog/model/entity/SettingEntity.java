@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Entity
-@Table(name = "blog_setting")
+//@Entity
+//@Table(name = "setting")
 public class SettingEntity extends BaseEntity {
 }

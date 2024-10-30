@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "blog_article")
+@Table(name = "article")
 public class ArticleEntity extends BaseEntity {
 
     private String title;

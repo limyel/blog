@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "blog_article_tag")
+@Table(name = "article_tag")
 public class ArticleTagEntity {
 
     @Id
