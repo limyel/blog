@@ -22,9 +22,9 @@ jobs:
       - name: ssh deploy
         uses: easingthemes/ssh-deploy@v5.0.3
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
           TARGET: ${{ secrets.TARGET }}
           SCRIPT_BEFORE: |
             rm -rf ~/blog
