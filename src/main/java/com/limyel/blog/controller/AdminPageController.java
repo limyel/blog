@@ -9,6 +9,7 @@ import com.limyel.blog.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin")
@@ -40,6 +42,7 @@ public class AdminPageController {
     public String doLogin(@ModelAttribute LoginDTO dto, HttpSession session) {
         UserEntity user = userService.doLogin(dto);
         if (user == null) {
+            log.info("用户名或密码错误");
             return "redirect:/admin/login";
         }
         session.setAttribute("user", user);
