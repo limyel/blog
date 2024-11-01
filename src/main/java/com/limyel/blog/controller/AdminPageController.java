@@ -2,6 +2,7 @@ package com.limyel.blog.controller;
 
 import com.limyel.blog.model.dto.ArticleDTO;
 import com.limyel.blog.model.dto.LoginDTO;
+import com.limyel.blog.model.dto.TagDTO;
 import com.limyel.blog.model.entity.UserEntity;
 import com.limyel.blog.service.ArticleService;
 import com.limyel.blog.service.TagService;
@@ -86,7 +87,7 @@ public class AdminPageController {
     }
 
     @PostMapping("/article/do-edit")
-    public String doEditArticle(@ModelAttribute ArticleDTO dto) {
+    public String articleDoEdit(@ModelAttribute ArticleDTO dto) {
         if (dto.getId() == null) {
             articleService.create(dto);
         } else {
@@ -103,5 +104,28 @@ public class AdminPageController {
         mv.addObject("tagPage", tagService.page(pageNum, pageSize));
         return mv;
     }
+
+    @GetMapping({"/tag/edit/{id}", "/tag/edit"})
+    public ModelAndView tagEdit(@PathVariable(required = false) Long id, HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("admin/tag_edit");
+        mv.addObject("request", request);
+        if (id != null) {
+            mv.addObject("tag", tagService.get(id));
+        } else {
+            mv.addObject("tag", new TagDTO());
+        }
+        return mv;
+    }
+
+    @PostMapping("/tag/do-edit")
+    public String tagDoEdit(@ModelAttribute TagDTO dto) {
+        if (dto.getId() == null) {
+            tagService.create(dto);
+        } else {
+            tagService.update(dto);
+        }
+        return "redirect:/admin/tag";
+    }
+
 
 }

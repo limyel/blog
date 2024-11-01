@@ -2,6 +2,7 @@ package com.limyel.blog.service;
 
 import com.limyel.blog.dao.ArticleTagReposiroty;
 import com.limyel.blog.dao.TagRepository;
+import com.limyel.blog.model.dto.TagDTO;
 import com.limyel.blog.model.entity.ArticleTagEntity;
 import com.limyel.blog.model.entity.TagEntity;
 import com.limyel.blog.model.vo.TagListVO;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,6 +23,26 @@ public class TagService {
     private final TagRepository tagRepository;
 
     private final ArticleTagReposiroty articleTagReposiroty;
+
+    public void create(TagDTO dto) {
+        TagEntity entity = new TagEntity();
+        BeanUtils.copyProperties(dto, entity);
+        tagRepository.save(entity);
+    }
+
+    public void update(TagDTO dto) {
+        TagEntity entity = tagRepository.findById(dto.getId()).orElseThrow(() -> new RuntimeException("标签不存在"));
+        BeanUtils.copyProperties(dto, entity);
+        tagRepository.save(entity);
+    }
+
+    public TagDTO get(Long id) {
+        return tagRepository.findById(id).map(tag -> {
+            TagDTO dto = new TagDTO();
+            BeanUtils.copyProperties(tag, dto);
+            return dto;
+        }).orElseThrow(() -> new RuntimeException("标签不存在"));
+    }
 
     public List<TagListVO> list() {
         List<TagListVO> result = new ArrayList<>();
