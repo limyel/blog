@@ -141,8 +141,7 @@ public class ArticleService {
 
     public Page<ArticleEntity> page(int pageNum, int pageSize) {
         PageRequest pageable = PageRequest.of(pageNum, pageSize);
-        Page<ArticleEntity> result = articleRepository.findAll(pageable);
-        return result;
+        return articleRepository.findAll(pageable);
     }
 
     public List<Integer> listYear() {

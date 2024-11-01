@@ -7,6 +7,8 @@ import com.limyel.blog.model.entity.TagEntity;
 import com.limyel.blog.model.vo.TagListVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,6 +33,11 @@ public class TagService {
         }
 
         return result;
+    }
+
+    public Page<TagEntity> page(int pageNum, int pageSize) {
+        PageRequest pageable = PageRequest.of(pageNum, pageSize);
+        return tagRepository.findAll(pageable);
     }
 
     public List<TagEntity> listAll() {

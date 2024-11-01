@@ -64,7 +64,7 @@ public class AdminPageController {
     }
 
     @GetMapping("/article")
-    public ModelAndView pageArticle(@RequestParam(defaultValue = "0") int pageNum,
+    public ModelAndView articlePage(@RequestParam(defaultValue = "0") int pageNum,
                                     @RequestParam(defaultValue = "10") int pageSize, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("admin/article");
         mv.addObject("request", request);
@@ -73,7 +73,7 @@ public class AdminPageController {
     }
 
     @GetMapping({"/article/edit/{id}", "/article/edit"})
-    public ModelAndView editArticle(@PathVariable(required = false) Long id, HttpServletRequest request) {
+    public ModelAndView articleEdit(@PathVariable(required = false) Long id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("admin/article_edit");
         mv.addObject("request", request);
         mv.addObject("tags", tagService.listAll());
@@ -93,6 +93,15 @@ public class AdminPageController {
             articleService.update(dto);
         }
         return "redirect:/admin/article";
+    }
+
+    @GetMapping("/tag")
+    public ModelAndView tagPage(@RequestParam(defaultValue = "0") int pageNum,
+                                    @RequestParam(defaultValue = "10") int pageSize, HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("admin/tag");
+        mv.addObject("request", request);
+        mv.addObject("tagPage", tagService.page(pageNum, pageSize));
+        return mv;
     }
 
 }
