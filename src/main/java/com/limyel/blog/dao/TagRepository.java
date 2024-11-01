@@ -10,4 +10,6 @@ public interface TagRepository extends JpaRepository<TagEntity, Long> {
 
     List<TagEntity> findByIdIn(List<Long> ids);
 
+    TagEntity findBySlug(String slug);
+
 }

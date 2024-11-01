@@ -105,7 +105,8 @@ public class ArticleService {
         ArticleListVO result = new ArticleListVO();
         result.setYear(dto.getYear());
         if (StringUtils.hasText(dto.getTag())) {
-            result.setTag(dto.getTag());
+            TagEntity tag = tagService.get(dto.getTag());
+            result.setTag(tag.getName());
         }
 
         Map<Integer, List<ArticleListVO.Article>> map = new HashMap<>();

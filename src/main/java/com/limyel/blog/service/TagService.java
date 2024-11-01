@@ -44,6 +44,10 @@ public class TagService {
         }).orElseThrow(() -> new RuntimeException("标签不存在"));
     }
 
+    public TagEntity get(String slug) {
+        return tagRepository.findBySlug(slug);
+    }
+
     public List<TagListVO> list() {
         List<TagListVO> result = new ArrayList<>();
 
