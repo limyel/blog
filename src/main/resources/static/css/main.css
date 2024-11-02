@@ -1,7 +1,7 @@
 body {
     min-height: 100vh;
     background-color: #eff1f5;
-    font-family: 'LXGW' !important;
+    font-family: 'MiSans' !important;
     font-weight: 300;
 }
 * {
@@ -11,20 +11,39 @@ body {
 }
 
 @font-face {
-    font-family: 'LXGW';
-    src: url('../font/LXGWWenKaiMono-Light.ttf') format('truetype');
+    font-family: 'MiSans';
+    src: url('../font/MiSans-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
-    font-family: 'LXGW';
-    src: url('../font/LXGWWenKaiMono-Medium.ttf') format('truetype');
+    font-family: 'MiSans';
+    src: url('../font/MiSans-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
-    font-family: 'LXGW';
-    src: url('../font/LXGWWenKaiMono-Regular.ttf') format('truetype');
+    font-family: 'MiSans';
+    src: url('../font/MiSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../font/JetBrainsMono-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../font/JetBrainsMono-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../font/JetBrainsMono-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
